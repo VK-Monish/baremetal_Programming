@@ -103,14 +103,6 @@ void off_All()
 }
 void patterns()
 {
-	/*pattern_0();
-	delay(100);
-	off_All();
-	delay(100);
-	pattern_1();
-	delay(100);
-	off_All();
-	delay(100);*/
 	pattern_0();
 	off_All();
 	pattern_1();
