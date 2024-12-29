@@ -110,6 +110,7 @@ void off_All()
 	*GPIOB_ODR = *GPIOB_ODR & (~1<<8);
 	*GPIOB_ODR = *GPIOB_ODR & (~1<<9);
 }
+
 void pattern0()
 {
 	for(int i=0; i<8; i++)
