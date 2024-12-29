@@ -56,7 +56,6 @@ void gpio_Moder()
 {
 	*GPIOA_MODER = *GPIOA_MODER | (1<<8);
 	*GPIOA_MODER = *GPIOA_MODER & (~0x00000003);
-	//*GPIOA_MODER = *GPIOA_MODER | (1<<0);
 }
 
 void delay_Ms(int ms)
