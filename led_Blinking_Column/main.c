@@ -70,13 +70,14 @@ void delay_Ms(int ms)
 		__asm("NOP");
 	}
 }
+
 void led_Blink_C13()
 {
 	*GPIOA_ODR = *GPIOA_ODR | (1<<0); // LED on
 	delay_Ms(100);
 	*GPIOA_ODR = *GPIOA_ODR & ~(1<<0);// LED off
 	*GPIOA_ODR = *GPIOA_ODR | (1<<1); // LED on
-	delay_Ms(100);
+	delay_MUpdate main.cs(100);
 	*GPIOA_ODR = *GPIOA_ODR & ~(1<<1);// LED off
 	*GPIOA_ODR = *GPIOA_ODR | (1<<2); // LED on
 	delay_Ms(100);
