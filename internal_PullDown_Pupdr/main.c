@@ -52,7 +52,7 @@ void gpio_Moder()
 	*GPIOA_MODER = *GPIOA_MODER & (~1<<1);
 	*GPIOA_MODER = *GPIOA_MODER & (~1<<0);
 	*GPIOA_MODER = *GPIOA_MODER | (1<<2);
-	//pull_Down
+	//internal pull_Down
 	*GPIOA_PUPDR = *GPIOA_PUPDR | (1<<1);
 }
 
