@@ -65,6 +65,7 @@ void delay_Ms(int ms)
 		__asm("NOP");
 	}
 }
+
 void button_Config()
 {
 	if((*GPIOA_IDR & (0X00000001)) == 1)
