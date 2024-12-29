@@ -132,6 +132,7 @@ void pattern_0()
 	*GPIOB_ODR = *GPIOB_ODR | (1<<9);//pin 7
 	delay(500);
 }
+
 void pattern_1()
 {
 	for(int i=0; i<8; i++)
