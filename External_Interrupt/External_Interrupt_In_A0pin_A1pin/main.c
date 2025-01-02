@@ -40,10 +40,13 @@ void rcc_Config()
 {
     *RCC_CR = *RCC_CR & (~0x00010000);
     *RCC_CR = *RCC_CR | (1 << 16);
+     while(!(*RCC_CR & (1<<17)));
+	
     *RCC_CFGR = *RCC_CFGR & (~0x00000003);
     *RCC_CFGR = *RCC_CFGR | (1 << 0);
-}
-
+     while(!(*RCC_CFGR & (1<<4)));
+	
+}	
 void choose_Port()
 {
     *RCC_AHB1ENR |= (1 << 0);
