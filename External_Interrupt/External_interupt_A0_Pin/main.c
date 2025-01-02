@@ -48,11 +48,15 @@ void rcc_Config()
 
 	*RCC_CR = *RCC_CR | (1<<16); /*HES is Enable*/
 
+	while(!(*RCC_CR & (1<<17)));
+
 	//clock configuration
 
 	*RCC_CFGR = *RCC_CFGR & (~0x00000003); /* disable the sw0 and sw1*/
 
 	*RCC_CFGR = *RCC_CFGR | (1<<0);
+
+	while(!(*RCC_CFGR & (1<<4)));
 }
 
 void choose_Port()
