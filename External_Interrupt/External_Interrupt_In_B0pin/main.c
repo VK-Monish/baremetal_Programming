@@ -20,8 +20,8 @@ volatile unsigned int *EXTI_IMR			= (volatile unsigned int *)0x40013C00;
 volatile unsigned int *EXTI_RTSR		= (volatile unsigned int *)0x40013C08;
 volatile unsigned int *EXTI_PR			= (volatile unsigned int *)0x40013C14;
 
-volatile unsigned int *SYSCFG_EXTICR1	= (volatile unsigned int *)0x40013808;
-volatile unsigned int *NVIC_ISER0		= (volatile unsigned int *)0xE000E100;
+volatile unsigned int *SYSCFG_EXTICR1	        =(volatile unsigned int *)0x40013808;
+volatile unsigned int *NVIC_ISER0		=(volatile unsigned int *)0xE000E100;
 
 void rcc_Config(void);
 void port(void);
@@ -49,11 +49,15 @@ void rcc_Config()
 
 	*RCC_CR = *RCC_CR | (1<<16); /*HES is Enable*/
 
+	while(!(*RCC_CR & (1<<17)));
+
 	//clock configuration
 
 	*RCC_CFGR = *RCC_CFGR & (~0x00000003); /* disable the sw0 and sw1*/
 
 	*RCC_CFGR = *RCC_CFGR | (1<<0);
+
+	while(!(*RCC_CFGR & (1<<4)));
 }
 
 void port()
