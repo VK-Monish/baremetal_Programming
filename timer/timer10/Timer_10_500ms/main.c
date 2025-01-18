@@ -18,7 +18,6 @@ int main(void)
 	rcc_Config();
 	choose_Port_C();
 	gpio_Moder();
-	//timer();
 	while(1)
 	{
 		led_Blink_C13();
