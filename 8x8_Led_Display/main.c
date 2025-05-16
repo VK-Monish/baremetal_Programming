@@ -1,9 +1,44 @@
 /**
  ******************************************************************************
-  Name : Monish Kumar.k
-  Date : 25/12/2024
-  File : 8x8_Led_Display
- ******************************************************************************/
+ * @file    8x8_Led_Display.c
+ * @author  Monish Kumar.k
+ * @date    25/12/2024
+ * @brief   STM32 bare-metal program to control an 8x8 LED matrix display
+ *          using GPIO ports A and B.
+ *
+ * Description:
+ * This program configures the STM32 microcontroller GPIO pins to drive an 8x8 LED
+ * matrix display. It performs clock configuration, enables GPIO ports A and B,
+ * sets pin modes, and demonstrates different LED patterns by manipulating the
+ * output data registers (ODR) of the GPIO ports.
+ *
+ * Features:
+ * - RCC (Reset and Clock Control) configuration to enable HSE clock and GPIO clocks.
+ * - GPIO mode configuration for pins used in the LED matrix.
+ * - Two main LED patterns displayed sequentially with delays.
+ * - Functions to turn off all LEDs before switching patterns.
+ * - Uses busy-wait loop for delays.
+ *
+ * Hardware Connections:
+ * - GPIOA pins 0 to 7 connected to one set of LED rows or columns.
+ * - GPIOB pins 0,1,2,5,6,7,8,9 connected to the other set of LED rows or columns.
+ *
+ * Usage:
+ * - Compile and flash this code to your STM32 microcontroller.
+ * - The program will continuously cycle through LED patterns on the 8x8 matrix.
+ *
+ * Notes:
+ * - This is a bare-metal program without any HAL or driver libraries.
+ * - Delay is implemented with a simple busy-wait loop.
+ * - Modify GPIO pins as needed based on your hardware wiring.
+ *
+ * References:
+ * - STM32F4xx Reference Manual for register details.
+ *
+ ******************************************************************************
+ */
+
+
 volatile unsigned int *RCC_CR      = (volatile unsigned int *)0x40023800;
 volatile unsigned int *RCC_CFGR    = (volatile unsigned int *)0x40023808;
 volatile unsigned int *RCC_AHB1ENR = (volatile unsigned int *)0x40023830;
