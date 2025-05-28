@@ -1,5 +1,63 @@
 /**
  ******************************************************************************
+ * Project Title   : 8x8 LED Pattern Display using Pull-up and Pull-down Buttons
+ * File Name       : 8x8_Led_Pullup_pullDown.c
+ * Author          : Monish Kumar K.
+ * Date            : 27/12/2024
+ * Target Platform : STM32F4xx Series (Bare-Metal)
+ *
+ * Description:
+ * --------------
+ * This bare-metal embedded C program controls an 8x8 LED matrix using GPIOA and GPIOB
+ * on an STM32F4 microcontroller. It uses internal pull-up and pull-down configurations
+ * on GPIOB input pins to detect button presses and displays specific LED patterns accordingly.
+ *
+ * Functional Overview:
+ * ---------------------
+ * - Initializes system clock using HSE.
+ * - Enables GPIOA and GPIOB peripheral clocks.
+ * - Configures GPIOA and GPIOB pins as output for LED control.
+ * - Monitors GPIOB inputs (configured as pull-up and pull-down) for button states.
+ * - If pull-up pin (PB12) is high (button not pressed), LEDs are OFF.
+ * - If pull-up pin is low (button pressed), `pattern0()` is shown.
+ * - If pull-down pin (PB14) is high (button pressed), `pattern1()` is shown.
+ *
+ * Pin Usage:
+ * ----------
+ * - GPIOA Pins 0 to 7 : Row control for 8x8 LED matrix.
+ * - GPIOB Pins 0, 1, 2, 5, 6, 7, 8, 9 : Column control for 8x8 LED matrix.
+ * - GPIOB Pin 12 : Pull-up button input.
+ * - GPIOB Pin 14 : Pull-down button input.
+ *
+ * Functions:
+ * ----------
+ * - main()                : Initializes peripherals and loops button scan.
+ * - rcc_Config()          : Configures system clock.
+ * - choose_Port_A()       : Enables clocks for GPIOA and GPIOB.
+ * - gpio_Moder()          : Configures basic GPIOB outputs.
+ * - gpio_Moder_Pattern()  : Configures both GPIOA and GPIOB for LED pattern display.
+ * - delay_Ms()            : Software delay loop (approximate timing).
+ * - off_All()             : Turns off all LEDs.
+ * - pattern0()            : Turns on LEDs in a progressive forward pattern.
+ * - pattern1()            : Turns on LEDs in a reverse pattern.
+ * - button_Config()       : Checks button state and invokes appropriate LED pattern.
+ *
+ * How to Build and Flash:
+ * ------------------------
+ * 1. Compile using `arm-none-eabi-gcc` or with Makefile.
+ * 2. Flash using OpenOCD or ST-Link utility.
+ *
+ * Notes:
+ * ------
+ * - This is a bare-metal implementation and does not use any HAL or CMSIS libraries.
+ * - Make sure your circuit has proper resistors for LEDs and buttons.
+ * - You can modify the pin assignments and delay logic for your own hardware setup.
+ *
+ ******************************************************************************
+ */
+
+/**
+ ******************************************************************************
   Name : Monish Kumar.k
   Date : 27/12/2024
   File : 8x8_Led_Pullup_pullDown
