@@ -1,5 +1,44 @@
 /**
  ******************************************************************************
+ * @file    interfacing_Ir_Sensor_By_External_Interrupt.c
+ * @author  Monish Kumar.K
+ * @date    31/12/2024
+ * @brief   IR Sensor Interfacing Using External Interrupt (EXTI) on STM32F4
+ ******************************************************************************
+ * @description
+ * This bare-metal program interfaces an IR sensor with the STM32F4 microcontroller 
+ * using an external interrupt on GPIO pin A0. When the sensor detects an object 
+ * (falling edge trigger on PA0), an interrupt is generated. Upon handling the interrupt, 
+ * a set of GPIOA pins (PA1 to PA8) is sequentially turned on with a delay to simulate 
+ * a lighting or indication effect.
+ * 
+ * The main loop continuously turns on each LED (PA8 to PA1) one by one with delays.
+ * On interrupt (triggered by the IR sensor), it performs another LED sequence and then resets.
+ * 
+ * @peripherals used:
+ * - GPIOA (PA0 input with pull-up for EXTI, PA1 to PA8 as outputs)
+ * - EXTI0 (for IR sensor interrupt detection)
+ * - NVIC (to enable EXTI0 IRQ)
+ * 
+ * @registers used:
+ * - RCC_CR, RCC_CFGR, RCC_AHB1ENR, RCC_APB2ENR
+ * - GPIOA_MODER, GPIOA_ODR, GPIOA_PUPDR
+ * - SYSCFG_EXTICR1, EXTI_IMR, EXTI_RTSR, EXTI_PR, NVIC_ISER0
+ * 
+ * @notes:
+ * - Ensure the IR sensor is connected to PA0 and provides a falling edge on object detection.
+ * - The delay function is based on NOPs and may vary based on system clock.
+ * - LEDs (or other output devices) should be connected to PA1–PA8 for visual output.
+ * 
+ * @warning:
+ * - No debounce mechanism for the IR signal.
+ * - The code runs in an infinite loop with blocking delays.
+ * - All configuration is done using register-level access; no HAL/LL drivers are used.
+ ******************************************************************************
+ */
+
+/**
+ ******************************************************************************
   Name : Monish Kumar.k
   Date : 31/12/2024
   File : interfacing_Ir_Sensor_By_External_Interrupt
