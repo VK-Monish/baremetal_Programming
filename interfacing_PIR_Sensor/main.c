@@ -1,5 +1,35 @@
 /**
  ******************************************************************************
+ * @file    interface_Pir_Sensor.c
+ * @author  Monish Kumar.k
+ * @date    29/12/2024
+ * @brief   Interface a PIR (Passive Infrared) sensor with STM32 using GPIO.
+ *
+ *          Description:
+ *          - Enables High-Speed External (HSE) clock and selects it as system clock.
+ *          - Enables clock for GPIO Port A and Port C.
+ *          - Configures PA0 as input with internal pull-up resistor enabled for PIR sensor input.
+ *          - Configures PA4 as output (assumed LED or indicator) on GPIOA.
+ *          - Configures PC13 as output (commonly onboard LED on many STM32 boards).
+ *          - Continuously reads the PIR sensor input on PA0.
+ *          - Turns OFF the LED on PC13 when PIR sensor input is HIGH (motion detected).
+ *          - Turns ON the LED on PC13 when PIR sensor input is LOW (no motion).
+ *
+ * @note    PIR sensor output is connected to PA0 (input).
+ *          Indicator LED connected to PC13 (output).
+ *          Internal pull-up enabled on PA0 to stabilize input.
+ *          Direct register access (bare-metal) is used.
+ *
+ * @usage   Connect PIR sensor output to PA0.
+ *          Connect an LED to PC13 with appropriate current limiting resistor.
+ *          When PIR sensor detects motion (PA0 HIGH), the LED on PC13 will turn OFF.
+ *          When no motion is detected (PA0 LOW), LED on PC13 will turn ON.
+ ******************************************************************************
+ */
+
+
+/**
+ ******************************************************************************
   Name : Monish Kumar.k
   Date : 29/12/2024
   File : interface_Pir_Sensor
