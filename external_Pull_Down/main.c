@@ -1,5 +1,32 @@
 /**
  ******************************************************************************
+ * @file    external_Pull_Down.c
+ * @author  Monish Kumar.k
+ * @date    26/12/2024
+ * @brief   This program configures GPIO Port A pins on an STM32 microcontroller 
+ *          to demonstrate reading a button input with an external pull-down resistor 
+ *          and controlling an LED accordingly.
+ *
+ *          Functionality:
+ *          - Enables High-Speed External (HSE) clock and selects it as the system clock.
+ *          - Enables GPIO Port A clock.
+ *          - Configures PA4 as an output pin (for LED).
+ *          - Configures PA0 as an input pin (button).
+ *          - Reads the input state of PA0 continuously.
+ *          - Turns ON the LED connected to PA4 when the button (PA0) is pressed (logic HIGH).
+ *          - Turns OFF the LED otherwise.
+ *
+ * @note    Assumes an external pull-down resistor is connected to the button input pin (PA0).
+ *          The code uses direct register manipulation for bare-metal programming.
+ *
+ * @usage   Connect a button to PA0 with an external pull-down resistor.
+ *          Connect an LED to PA4.
+ *          When the button is pressed, the LED will turn ON; otherwise, it will be OFF.
+ ******************************************************************************
+ */
+
+/**
+ ******************************************************************************
   Name : Monish Kumar.k
   Date : 26/12/2024
   File : external_Pull_Down
