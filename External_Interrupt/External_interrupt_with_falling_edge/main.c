@@ -1,5 +1,48 @@
 /**
  ******************************************************************************
+ * Project Title : External Interrupt with Falling Edge on GPIOA Pin 0
+ * Author        : Monish Kumar K.
+ * Date          : 02/01/2025
+ * File          : external_Interrupt_With_Falling_Edge.c
+ * Description   :
+ *     This project demonstrates the use of an external interrupt triggered on 
+ *     a **falling edge** at pin **PA0** using STM32F4 (bare-metal programming).
+ *     When a falling edge is detected on PA0 (e.g., button press), an interrupt 
+ *     is triggered (EXTI0_IRQHandler), and an LED connected to PA5 blinks five times.
+ *
+ * Hardware Setup:
+ *     - PA0: Configured as input with pull-up (connected to a button or signal).
+ *     - PA5: Configured as output (connected to an LED).
+ *
+ * Functional Summary:
+ *     - The system clock is enabled and configured to use the HSE.
+ *     - GPIOA and SYSCFG clocks are enabled.
+ *     - PA5 is set as output, and PA0 as input with pull-up resistor.
+ *     - EXTI0 line is configured to trigger on falling edge of PA0.
+ *     - NVIC is configured to handle EXTI0 interrupts.
+ *     - The interrupt service routine (ISR) toggles the LED on PA5 five times.
+ *
+ * Register Usage:
+ *     - RCC_CR, RCC_CFGR       : Clock configuration using HSE.
+ *     - RCC_AHB1ENR            : Enables GPIOA.
+ *     - RCC_APB2ENR            : Enables SYSCFG (for EXTI line mapping).
+ *     - GPIOA_MODER            : Configures PA0 as input, PA5 as output.
+ *     - GPIOA_PUPDR            : Enables pull-up for PA0.
+ *     - SYSCFG_EXTICR1         : Maps EXTI line 0 to PA0.
+ *     - EXTI_IMR, EXTI_FTSR    : Enables interrupt mask and falling edge trigger.
+ *     - EXTI_PR                : Clears interrupt pending bit.
+ *     - NVIC_ISER0             : Enables EXTI0 IRQ in NVIC.
+ *
+ * Notes:
+ *     - No HAL or CMSIS libraries used—pure register-level code.
+ *     - Delay is implemented using a simple NOP loop for demonstration.
+ *     - Suitable for learning low-level interrupt configuration on STM32.
+ *
+ ******************************************************************************
+ */
+
+/**
+ ******************************************************************************
   Name : Monish Kumar.k
   Date : 2/01/2025
   File : external_Interrupt_With_Falling_Edge
