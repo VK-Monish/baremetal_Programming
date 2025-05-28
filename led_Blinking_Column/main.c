@@ -1,5 +1,35 @@
 /**
  ******************************************************************************
+ * @file    led_Blinking_Column.c
+ * @author  Monish Kumar.k
+ * @date    24/12/2024
+ * @brief   This program configures GPIO Port A on an STM32 microcontroller to 
+ *          blink LEDs connected to pins PA0 through PA7 in a column pattern.
+ * 
+ *          The program performs the following steps:
+ *          1. Enables the High-Speed External (HSE) clock.
+ *          2. Selects HSE as the system clock source.
+ *          3. Enables the clock for GPIO Port A.
+ *          4. Configures pins PA0 to PA7 as output pins.
+ *          5. Continuously blinks LEDs connected to PA0 to PA7 sequentially, 
+ *             and in different combined patterns with delays.
+ * 
+ *          The delay is implemented using a simple loop for timing.
+ * 
+ * @note    This code accesses peripheral registers directly via memory-mapped 
+ *          addresses and is intended for bare-metal STM32 programming.
+ * 
+ * @usage   Compile and flash this program to an STM32 MCU with LEDs connected 
+ *          to Port A pins 0 to 7. The LEDs will light up in a columnar blinking 
+ *          pattern with various sequences.
+ * 
+ * @attention Ensure your hardware setup matches the pin connections and power 
+ *            supply requirements for the LEDs.
+ ******************************************************************************
+ */
+
+/**
+ ******************************************************************************
   Name : Monish Kumar.k
   Date : 24/12/2024
   File : led_Blinking_Column
