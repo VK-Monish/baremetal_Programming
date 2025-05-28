@@ -1,5 +1,32 @@
 /**
  ******************************************************************************
+ * @file    Manual_PWM.c
+ * @author  Monish Kumar.k
+ * @date    16/01/2025
+ * @brief   Manual PWM implementation using TIM10 timer on STM32 to vary LED brightness.
+ *
+ * @details
+ * This program demonstrates a software-based PWM (Pulse Width Modulation) technique
+ * by manually controlling the ON and OFF durations of an LED connected to PC15.
+ * The TIM10 timer is configured for delay generation, and duty cycle is varied in a
+ * loop to simulate PWM behavior, producing a fading LED effect.
+ *
+ * Functionalities:
+ *  - RCC clock configuration to enable HSE oscillator
+ *  - Enabling GPIOC and TIM10 peripheral clocks
+ *  - Configuring PC15 as output pin for LED control
+ *  - Manual PWM implemented by varying delay durations for ON and OFF states
+ *  - LED brightness varies by changing duty cycle in increments and decrements
+ *
+ * Note:
+ *  - This is a simple, blocking software PWM; timer interrupts or hardware PWM
+ *    are not used.
+ *  - Delay and brightness depend on timer settings and CPU clock frequency.
+ ******************************************************************************
+ */
+
+/**
+ ******************************************************************************
   Name : Monish Kumar.k
   Date : 16/01/2025
   File : Manual_PWM
