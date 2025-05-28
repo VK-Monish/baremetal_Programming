@@ -1,5 +1,48 @@
 /**
  ******************************************************************************
+ * Project Title : External Interrupt on GPIOB Pin 0
+ * Author        : Monish Kumar K.
+ * Date          : 01/01/2025
+ * File          : external_Interrupt_In_B0pin.c
+ * Description   :
+ *     This project demonstrates the use of an external interrupt on GPIO pin
+ *     PB0 of an STM32F4 microcontroller. When a rising edge is detected on PB0,
+ *     an interrupt is triggered (EXTI0_IRQHandler), which toggles an LED
+ *     connected to PA5 five times with a delay.
+ *
+ * Hardware Setup:
+ *     - An LED is connected to PA5.
+ *     - A button (or signal source) is connected to PB0, configured with a pull-down resistor.
+ *
+ * Functional Summary:
+ *     - The system clock is configured to use HSE.
+ *     - GPIOA and GPIOB ports are enabled.
+ *     - PA5 is configured as output.
+ *     - PB0 is configured as input with a pull-down resistor.
+ *     - External interrupt on PB0 (EXTI0) is set up to trigger on a rising edge.
+ *     - In the ISR, the LED on PA5 toggles ON and OFF five times.
+ *
+ * Register Usage:
+ *     - RCC_CR, RCC_CFGR       : System clock configuration
+ *     - RCC_AHB1ENR            : Enable GPIOA and GPIOB peripheral clocks
+ *     - RCC_APB2LPENR          : Enable SYSCFG clock
+ *     - GPIOA_MODER            : Set PA5 as output
+ *     - GPIOB_PUPDR            : Enable pull-down for PB0
+ *     - SYSCFG_EXTICR1         : Configure EXTI0 to use PB0
+ *     - EXTI_IMR, EXTI_RTSR    : Configure interrupt mask and rising trigger
+ *     - EXTI_PR                : Pending register to clear interrupt
+ *     - NVIC_ISER0             : Enable EXTI0 interrupt in NVIC
+ *
+ * Notes:
+ *     - This code is written using a bare-metal approach, directly manipulating
+ *       memory-mapped peripheral registers without any HAL or CMSIS libraries.
+ *     - Suitable for learning how external interrupts work on STM32 at register level.
+ *
+ ******************************************************************************
+ */
+
+/**
+ ******************************************************************************
   Name : Monish Kumar.k
   Date : 1/01/2025
   File : external_Interrupt_In_B0pin
