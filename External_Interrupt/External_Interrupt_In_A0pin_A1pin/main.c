@@ -1,5 +1,41 @@
 /**
  ******************************************************************************
+ * @file    external_Interrupt_In_A0pin_A1pin.c
+ * @author  Monish Kumar K
+ * @date    01-Jan-2025
+ * @brief   Bare-metal implementation of external interrupts on STM32F4 GPIOA pins A0 and A1.
+ *
+ * This program demonstrates the configuration and handling of external interrupts 
+ * using direct register access without HAL or CMSIS libraries.
+ *
+ * - Pin A0 (PA0) is configured as input with pull-down resistor.
+ * - Pin A1 (PA1) is configured as input with pull-up resistor.
+ * - PA5 and PA6 are configured as output pins for LED indication.
+ *
+ * Interrupts:
+ * - EXTI0 (line 0) is triggered on a rising edge from PA0.
+ * - EXTI1 (line 1) is triggered on a rising edge from PA1.
+ *
+ * Functionality:
+ * - When PA0 is triggered, PA6 blinks 5 times.
+ * - When PA1 is triggered, PA5 blinks 5 times.
+ *
+ * Registers Used:
+ * - RCC (Clock Control)
+ * - GPIOA (General Purpose I/O Port A)
+ * - SYSCFG (System Configuration Controller)
+ * - EXTI (External Interrupt/Event Controller)
+ * - NVIC (Nested Vectored Interrupt Controller)
+ *
+ * Usage:
+ * - Connect buttons or external signals to PA0 and PA1.
+ * - Observe LED blinking behavior on PA6 and PA5 respectively.
+ *
+ ******************************************************************************
+ */
+
+/**
+ ******************************************************************************
   Name : Monish Kumar.k
   Date : 1/01/2025
   File : external_Interrupt_In_A0pin_A1pin
