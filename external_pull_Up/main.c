@@ -1,5 +1,33 @@
 /**
  ******************************************************************************
+ * @file    external_Pull_Up.c
+ * @author  Monish Kumar.k
+ * @date    26/12/2024
+ * @brief   This program demonstrates reading a button input using an external pull-up resistor
+ *          and controlling an LED on an STM32 microcontroller via direct register access.
+ *
+ *          Functionality:
+ *          - Enables the High-Speed External (HSE) clock and configures it as the system clock.
+ *          - Enables the clock for GPIO Port A.
+ *          - Configures PA4 as an output pin (LED control).
+ *          - Configures PA0 as an input pin (button).
+ *          - Continuously reads the state of the button connected to PA0.
+ *          - Turns the LED (PA4) OFF when the button is pressed (logic LOW due to pull-up).
+ *          - Turns the LED ON when the button is released (logic HIGH).
+ *
+ * @note    Assumes the button is connected to PA0 with an external pull-up resistor.
+ *          The LED is active low in this configuration.
+ *          The code uses bare-metal programming with direct register manipulation.
+ *
+ * @usage   Connect a button to PA0 with an external pull-up resistor.
+ *          Connect an LED to PA4.
+ *          When the button is pressed, the LED turns OFF; when released, the LED turns ON.
+ ******************************************************************************
+ */
+
+
+/**
+ ******************************************************************************
   Name : Monish Kumar.k
   Date : 26/12/2024
   File : external_Pull_Up
