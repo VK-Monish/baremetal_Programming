@@ -1,5 +1,31 @@
 /**
  ******************************************************************************
+ * @file    Timer_10_500ms.c
+ * @author  Monish Kumar.k
+ * @date    13/01/2025
+ * @brief   Basic timer configuration and LED blinking on STM32 using TIM10.
+ *
+ * @details
+ * This program configures the STM32 to blink an LED connected to PC13 using
+ * Timer 10 (TIM10) as a delay generator. The timer is set with a prescaler and
+ * auto-reload value to produce approximately 500ms delay intervals.
+ *
+ * Functionalities:
+ *  - RCC clock configuration enabling HSE (High-Speed External) oscillator
+ *  - Enabling GPIOC and TIM10 peripheral clocks
+ *  - Configuring PC13 as a general-purpose output pin for LED control
+ *  - Using TIM10 timer for delay generation through polling update event flag
+ *  - LED toggling with 500ms ON/OFF delay via timer interrupts disabled
+ *
+ * Note:
+ *  - Delay timing depends on timer clock and prescaler values; adjust ARR for
+ *    fine tuning.
+ *  - This code uses direct register manipulation without HAL or CMSIS functions.
+ ******************************************************************************
+ */
+
+/**
+ ******************************************************************************
   Name : Monish Kumar.k
   Date : 13/01/2025
   File : Timer_10_500ms
