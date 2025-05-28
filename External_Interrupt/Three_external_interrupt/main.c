@@ -1,5 +1,38 @@
 /**
  ******************************************************************************
+ * @file    three_external_Interrupt.c
+ * @author  Monish Kumar K
+ * @date    03/01/2025
+ * @brief   Example of configuring and handling three external interrupts (EXTI)
+ *          on STM32F4 using bare-metal programming without HAL libraries.
+ *
+ * @details
+ * This program configures three external interrupts on GPIOA pins PA0, PA1, and PA15.
+ * Each interrupt triggers an ISR that blinks an LED connected to PA6, PA5, or PA7 respectively.
+ *
+ * GPIO Pin usage:
+ *  - PA0  : EXTI0 input interrupt (blinks LED on PA6)
+ *  - PA1  : EXTI1 input interrupt (blinks LED on PA5)
+ *  - PA15 : EXTI15 input interrupt (blinks LED on PA7)
+ *  - PA5, PA6, PA7 : Output pins to drive LEDs
+ *
+ * Core functionalities:
+ *  - RCC clock configuration for GPIOA and SYSCFG peripherals
+ *  - GPIO mode and pull-up/down resistor setup
+ *  - SYSCFG external interrupt configuration for pin mapping
+ *  - EXTI interrupt mask and trigger selection (rising edge)
+ *  - NVIC interrupt enabling for EXTI lines 0, 1, and 15
+ *  - Interrupt service routines for each EXTI line with LED blinking logic
+ *
+ * Note:
+ *  - External triggers (e.g., buttons) must be connected to PA0, PA1, and PA15 pins.
+ *  - Delay function uses a simple loop with NOP instructions for timing.
+ ******************************************************************************
+ */
+
+
+/**
+ ******************************************************************************
   Name : Monish Kumar.k
   Date : 3/01/2025
   File : three_external_Interrupt
