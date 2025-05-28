@@ -1,5 +1,30 @@
 /**
  ******************************************************************************
+ * @file    default_C13.c
+ * @author  Monish Kumar.k
+ * @date    23/12/2024
+ * @brief   This program configures GPIO Port C, pin 13 (PC13) on an STM32 
+ *          microcontroller to blink an LED connected to that pin.
+ * 
+ *          The program performs the following:
+ *          1. Enables the High-Speed External (HSE) clock.
+ *          2. Selects HSE as the system clock source.
+ *          3. Enables the clock for GPIO Port C.
+ *          4. Configures PC13 as a digital output pin.
+ *          5. Toggles the LED connected to PC13 ON and OFF with a 1-second delay.
+ * 
+ *          Delay is implemented via a simple busy-wait loop.
+ * 
+ * @note    The code directly manipulates hardware registers using memory-mapped
+ *          addresses for bare-metal STM32 programming.
+ * 
+ * @usage   Compile and flash this code to an STM32 MCU with an LED connected 
+ *          to PC13. The LED will blink ON and OFF every second.
+ ******************************************************************************
+ */
+
+/**
+ ******************************************************************************
   Name : Monish Kumar.k
   Date : 23/12/2024
   File : default_C13
