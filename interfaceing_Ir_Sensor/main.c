@@ -1,5 +1,34 @@
 /**
  ******************************************************************************
+ * @file    interface_Ir_Sensor.c
+ * @author  Monish Kumar.k
+ * @date    29/12/2024
+ * @brief   Interface an IR sensor with STM32 using GPIO and internal pull-up resistor.
+ *
+ *          Description:
+ *          - Enables the High-Speed External (HSE) clock and selects it as system clock.
+ *          - Enables clock for GPIO Port A.
+ *          - Configures PA0 as input with internal pull-up resistor enabled for IR sensor input.
+ *          - Configures PA1 as output to drive an LED or indicator.
+ *          - Continuously reads the input from IR sensor on PA0.
+ *          - Turns ON the LED (PA1) when IR sensor output is LOW (object detected).
+ *          - Turns OFF the LED when IR sensor output is HIGH (no object).
+ *          - Adds a delay of ~1 second when LED is ON to debounce or indicate presence.
+ *
+ * @note    IR sensor output is connected to PA0 (input).
+ *          LED or indicator connected to PA1 (output).
+ *          Internal pull-up resistor enabled on PA0 to ensure stable HIGH state when no object.
+ *          This code uses direct register access (bare-metal).
+ *
+ * @usage   Connect IR sensor output to PA0.
+ *          Connect LED to PA1.
+ *          When the IR sensor detects an object (output LOW), the LED turns ON.
+ *          When no object is detected (output HIGH), the LED remains OFF.
+ ******************************************************************************
+ */
+
+/**
+ ******************************************************************************
   Name : Monish Kumar.k
   Date : 29/12/2024
   File : interface_Ir_Sensor
