@@ -1,5 +1,49 @@
 /**
  ******************************************************************************
+ * Project Title : External Interrupt with Rising Edge on GPIOA Pin 0
+ * Author        : Monish Kumar K.
+ * Date          : 30/12/2024
+ * File          : external_Interrupt_A0_Pin.c
+ * Description   :
+ *     This project demonstrates how to configure an external interrupt on 
+ *     STM32F4 using **rising edge trigger** on pin **PA0** (e.g., button release).
+ *     When the interrupt is triggered, the interrupt handler blinks an LED 
+ *     connected to **PA5** five times.
+ *
+ * Hardware Setup:
+ *     - PA0: Input with pull-down or button tied to logic low by default.
+ *     - PA5: Output connected to an LED.
+ *     - Rising edge interrupt is triggered by a transition from 0 to 1 on PA0.
+ *
+ * Functional Summary:
+ *     - HSE (High-Speed External) clock is enabled and set as system clock.
+ *     - GPIOA and SYSCFG clocks are enabled.
+ *     - PA5 is configured as output, PA0 as input with pull-down.
+ *     - EXTI line 0 is mapped to PA0.
+ *     - Interrupts are enabled for rising edge on EXTI line 0.
+ *     - ISR (EXTI0_IRQHandler) blinks the LED 5 times on interrupt.
+ *
+ * Register Usage:
+ *     - RCC_CR, RCC_CFGR       : Clock control (HSE and system clock).
+ *     - RCC_AHB1ENR            : Enables GPIOA peripheral.
+ *     - RCC_APB2ENR            : Enables SYSCFG (needed for EXTI configuration).
+ *     - GPIOA_MODER            : Sets PA0 as input, PA5 as output.
+ *     - GPIOA_PUPDR            : Pull-down on PA0 to detect rising edge clearly.
+ *     - SYSCFG_EXTICR1         : Maps EXTI0 line to PA0.
+ *     - EXTI_IMR, EXTI_RTSR    : Interrupt mask and rising edge trigger for EXTI0.
+ *     - EXTI_PR                : Clears the pending interrupt.
+ *     - NVIC_ISER0             : Enables EXTI0 interrupt in NVIC.
+ *
+ * Notes:
+ *     - All configuration is done at the register level (no HAL or CMSIS).
+ *     - The project is ideal for learning STM32 interrupt handling.
+ *     - Rising edge is typically used for detecting button release.
+ *
+ ******************************************************************************
+ */
+
+/**
+ ******************************************************************************
   Name : Monish Kumar.k
   Date : 30/12/2024
   File : external_Interrupt_A0_Pin
